@@ -1,1 +1,3 @@
 # teste_pratico
+
+## O objetico deste teste é criar uma aplicação em react, em que você tem que completar o codigo do arquivo testeJS.txt para mostrar os numeros de um contador de 1 a 100  no qual deve ser inrementado e decrementado manualmente por botões e caso o numero seja multiplo de 3 deve-se mostrar a string "Baltar", e caso seja multiplo de 5 a string "TEC", se for multiplo de 3 e 5, deve-se mostrar a string "BaltarTEC", pode ser feita qualquer alteração no codigo que achar necessário
