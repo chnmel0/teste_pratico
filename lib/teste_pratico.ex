@@ -46,23 +46,26 @@ defmodule TestePratico do
       {:ok, value}
     end
   end
+
+  def mensageiro(from) do
+    receive do
+      {:increment, [value, n]} ->
+        {:ok, resp} = increment(value, n)
+        send from, {:incrementado, resp}
+      {:decrement, [value, n]} ->
+        {:ok, resp} = decrement(value, n)
+        send from, {:decrementado, resp}
+    end
+    mensageiro(from)
+  end
   @doc """
   Inicia um processo que aguarda o recebimento de uma mensagem informando se deve incrementar ou 
   decrementar um número e a quantidade de vezes.
   Ao completar o cálculo responder a mensagem para o processo principal com o novo valor do número.
   """
-  def startlink() do
+  def startlink(from) do
     #TODO
-    incordec = IO.gets "key i [for increment] or d [for decrement]?"
-    cond do
-      incordec == "i\n" ->
-        value = elem(Integer.parse(IO.gets "Valor a incrementar: "),0)
-        n = elem(Integer.parse(IO.gets "Quantidade de vezes a incrementar: "),0)
-        increment(value, n)
-      incordec == "d\n" ->
-        value = elem(Integer.parse(IO.gets "Valor a decrementar: "),0)
-        n = elem(Integer.parse(IO.gets "Quantidade de vezes a decrementar: "),0)
-        decrement(value, n)
-    end
+      pid = spawn_link(__MODULE__, :mensageiro, [from])
+      {:ok, pid}
   end  
 end
