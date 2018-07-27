@@ -44,10 +44,9 @@ defmodule TestePratico do
     :ok
   end
   @doc """
-  Inicia um processo que recebe uma mensagem informando se deseja 
-  incrementar ou decrementar um número e a quantidade de vezes.
-  Ao completar essa mensagem responder com o valor calculado com
-  outra mensagem para o processo inicial.
+  Inicia um processo que aguarda o recebimento de uma mensagem informando se deve incrementar ou 
+  decrementar um número e a quantidade de vezes.
+  Ao completar o cálculo responder a mensagem para o processo principal com o novo valor do número.
   """
   def startlink() do
     #TODO
