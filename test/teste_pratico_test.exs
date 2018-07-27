@@ -10,7 +10,6 @@ defmodule TestePraticoTest do
     assert TestePratico.decrement(10, 5) == {:ok, 5}
   end
   test "incrementando" do
-    #TODO
-    assert TestePratico.increment() == :ok
+    assert TestePratico.increment(5, 5) == {:ok, 10}
   end
 end
